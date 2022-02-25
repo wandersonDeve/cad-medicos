@@ -20,7 +20,7 @@ export class MedicoController {
 
   @Get('pesquisar')
   pesquisar(@Query() query:Medico) {
-    return this.medicoService.pesquisar();
+    return this.medicoService.pesquisar(query);
   }
 
   @Get(':id')
