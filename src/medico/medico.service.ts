@@ -16,25 +16,14 @@ export class MedicoService {
     });
 
     if (medico) {
-      throw new BadRequestException(
-        'CRM já esta cadastrado',
-      );
-    }
-
-    if (data.especialidades[0] < 8 || data.especialidades[1] > 8) {
-      throw new BadRequestException(
-        'Especialidade não existente',
-      );
+      throw new BadRequestException('CRM já esta cadastrado');
     }
 
     const novoMedico = await this.db.medico.create({
       data: {
         ...data,
         especialidades: {
-          connect: [
-            { id: data.especialidades[0] },
-            { id: data.especialidades[1] },
-          ],
+          connect: data.especialidades.connect,
         },
       },
       include: {
@@ -50,7 +39,7 @@ export class MedicoService {
   }
 
   async pesquisar(queryDto: Medico) {
-    const { nome, crm, fixo, celular, } = queryDto;
+    const { nome, crm, fixo, celular } = queryDto;
 
     if (!nome && !crm && !fixo && !celular) {
       throw new BadRequestException('Sem dados para filtrar');
@@ -139,10 +128,7 @@ export class MedicoService {
       data: {
         ...data,
         especialidades: {
-          connect: [
-            { id: data.especialidades[0] },
-            { id: data.especialidades[1] },
-          ],
+          connect: data.especialidades.connect,
         },
       },
       include: {
