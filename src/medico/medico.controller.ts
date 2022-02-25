@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { MedicoService } from './medico.service';
 import { CreateMedicoDto } from './dto/create-medico.dto';
 import { UpdateMedicoDto } from './dto/update-medico.dto';
+import { Medico } from './entities/medico.entity';
 
 @Controller('medico')
 export class MedicoController {
@@ -15,6 +16,11 @@ export class MedicoController {
   @Get()
   findAll() {
     return this.medicoService.findAll();
+  }
+
+  @Get('pesquisar')
+  pesquisar(@Query() query:Medico) {
+    return this.medicoService.pesquisar();
   }
 
   @Get(':id')
