@@ -7,5 +7,10 @@ export class Medico implements Prisma.MedicoUncheckedCreateInput{
   fixo: number;
   celular: number;
   cep: number;
+  rua: string;
+  complemento?: string;
+  bairro: string;
+  cidade: string;
+  uf: string;
   especialidades?: Prisma.EspecialidadeUncheckedCreateNestedManyWithoutMedicosInput;
 }

@@ -1,7 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from './../prisma.service';
 import { CreateMedicoDto } from './dto/create-medico.dto';
-import { queryMedico } from './dto/query-medico.dto';
 import { UpdateMedicoDto } from './dto/update-medico.dto';
 import { Medico } from './entities/medico.entity';
 
@@ -39,7 +38,7 @@ export class MedicoService {
     return novoMedico;
   }
 
-  async pesquisar(queryDto: queryMedico) {
+  async pesquisar(queryDto:Medico) {
     if (!queryDto) {
       throw new BadRequestException('Sem dados para filtrar');
     }
@@ -62,14 +61,12 @@ export class MedicoService {
                 equals: queryDto.cep,
               },
               OR: {
-                endereco: {
-                  rua: {
-                    equals: queryDto.rua,
-                  },
-                  OR: {
-                    bairro: {
-                      equals: queryDto.bairro,
-                    },
+                rua: {
+                  equals: queryDto.rua,
+                },
+                OR: {
+                  bairro: {
+                    equals: queryDto.bairro,
                   },
                 },
               },
