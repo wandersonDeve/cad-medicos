@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString, Length, Max } from "class-validator";
+import { IsNotEmpty, IsNumber, IsOptional, IsString, Length, Max } from "class-validator";
 import { Medico } from "../entities/medico.entity";
 
 export class CreateMedicoDto extends Medico
@@ -24,4 +24,24 @@ export class CreateMedicoDto extends Medico
   @IsNumber()
   @IsNotEmpty({ message: 'O campo CEP não pode ser vazio' })
   cep: number;
+
+  @IsString()
+  @IsNotEmpty({ message: 'O campo RUA não pode ser vazio' })
+  rua: string;
+
+  @IsString()
+  @IsOptional()
+  complemento?: string;
+
+  @IsString()
+  @IsNotEmpty({ message: 'O campo CIDADE não pode ser vazio' })
+  cidade: string;
+
+  @IsString()
+  @IsNotEmpty({ message: 'O campo BAIRRO não pode ser vazio' })
+  bairro: string;
+
+  @IsString()
+  @IsNotEmpty({ message: 'O campo UF não pode ser vazio' })
+  uf: string;
 }
