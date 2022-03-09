@@ -18,10 +18,22 @@ model Medico {
   celular        Int    @unique
   cep            Int
   especialidades Especialidade[]
+  endereco Endereco?
 }
 
 model Especialidade{
   id     Int      @id     @default(autoincrement())
   nome   String   @unique
   medicos Medico[]
+}
+
+model Endereco{
+  id          Int     @id     @default(autoincrement())
+  rua         String
+  complemento String?
+  bairro      String
+  cidade      String
+  uf          String
+  medico      Medico  @relation(fields: [medicoId], references: [id])
+  medicoId    Int
 }
