@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestj
 import { MedicoService } from './medico.service';
 import { CreateMedicoDto } from './dto/create-medico.dto';
 import { UpdateMedicoDto } from './dto/update-medico.dto';
-import { Medico } from './entities/medico.entity';
+import { queryMedico } from './dto/query-medico.dto';
 
 @Controller('medico')
 export class MedicoController {
@@ -19,7 +19,7 @@ export class MedicoController {
   }
 
   @Get('pesquisar')
-  pesquisar(@Query() query:Medico) {
+  pesquisar(@Query() query:queryMedico) {
     return this.medicoService.pesquisar(query);
   }
 

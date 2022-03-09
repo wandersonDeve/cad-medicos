@@ -1,6 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from './../prisma.service';
 import { CreateMedicoDto } from './dto/create-medico.dto';
+import { queryMedico } from './dto/query-medico.dto';
 import { UpdateMedicoDto } from './dto/update-medico.dto';
 import { Medico } from './entities/medico.entity';
 
@@ -38,29 +39,39 @@ export class MedicoService {
     return novoMedico;
   }
 
-  async pesquisar(queryDto: Medico) {
-    const { nome, crm, fixo, celular } = queryDto;
-
-    if (!nome && !crm && !fixo && !celular) {
+  async pesquisar(queryDto: queryMedico) {
+    if (!queryDto) {
       throw new BadRequestException('Sem dados para filtrar');
     }
 
     const cadastro = await this.db.medico.findMany({
       where: {
         nome: {
-          contains: nome,
+          contains: queryDto.nome,
         },
         OR: {
-          crm: {
-            equals: +crm,
+          celular: {
+            equals: queryDto.celular,
           },
           OR: {
-            celular: {
-              equals: +celular,
+            fixo: {
+              equals: queryDto.fixo,
             },
             OR: {
-              fixo: {
-                equals: +fixo,
+              cep: {
+                equals: queryDto.cep,
+              },
+              OR: {
+                endereco: {
+                  rua: {
+                    equals: queryDto.rua,
+                  },
+                  OR: {
+                    bairro: {
+                      equals: queryDto.bairro,
+                    },
+                  },
+                },
               },
             },
           },
