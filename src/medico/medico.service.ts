@@ -8,7 +8,8 @@ import { Medico } from './entities/medico.entity';
 export class MedicoService {
   constructor(private readonly db: PrismaService) {}
 
-  async create(data: CreateMedicoDto) {
+  async create(data: CreateMedicoDto)
+  {
     const medico = await this.db.medico.findUnique({
       where: {
         crm: data.crm,
