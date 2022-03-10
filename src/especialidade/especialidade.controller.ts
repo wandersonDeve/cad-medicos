@@ -19,11 +19,22 @@ export class EspecialidadeController {
   constructor(private readonly especialidadeService: EspecialidadeService) {}
 
   @Post()
+  @UsePipes(ValidationPipe)
   create(@Body() createEspecialidadeDto: CreateEspecialidadeDto) {
     return this.especialidadeService.create(createEspecialidadeDto);
   }
 
+  @Post('/many')
+  @UsePipes(ValidationPipe)
+  createMany(@Body() data: any) {
+    return this.especialidadeService.createMany({
+      data,
+      skipDuplicates: true,
+    });
+  }
+
   @Get()
+  @UsePipes(ValidationPipe)
   findAll() {
     return this.especialidadeService.findAll();
   }
