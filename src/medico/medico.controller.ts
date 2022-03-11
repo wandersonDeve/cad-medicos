@@ -1,8 +1,8 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Query, ValidationPipe, UsePipes } from '@nestjs/common';
-import { MedicoService } from 'medico/medico.service';
-import { CreateMedicoDto } from 'medico/dto/create-medico.dto';
-import { UpdateMedicoDto } from 'medico/dto/update-medico.dto';
-import { Medico } from 'medico/entities/medico.entity';
+import { MedicoService } from './medico.service';
+import { CreateMedicoDto } from './dto/create-medico.dto';
+import { UpdateMedicoDto } from './dto/update-medico.dto';
+import { Medico } from './entities/medico.entity';
 
 @Controller('medico')
 export class MedicoController {

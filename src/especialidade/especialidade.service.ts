@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { PrismaService } from 'prisma.service';
-import { CreateEspecialidadeDto } from 'especialidade/dto/create-especialidade.dto';
-import { UpdateEspecialidadeDto } from 'especialidade/dto/update-especialidade.dto';
+import { PrismaService } from '../prisma.service';
+import { CreateEspecialidadeDto } from './dto/create-especialidade.dto';
+import { UpdateEspecialidadeDto } from './dto/update-especialidade.dto';
 
 @Injectable()
 export class EspecialidadeService {

@@ -10,9 +10,9 @@ import {
   ValidationPipe,
   ParseIntPipe,
 } from '@nestjs/common';
-import { EspecialidadeService } from 'especialidade/especialidade.service';
-import { CreateEspecialidadeDto } from 'especialidade/dto/create-especialidade.dto';
-import { UpdateEspecialidadeDto } from 'especialidade/dto/update-especialidade.dto';
+import { EspecialidadeService } from './especialidade.service';
+import { CreateEspecialidadeDto } from './dto/create-especialidade.dto';
+import { UpdateEspecialidadeDto } from './dto/update-especialidade.dto';
 
 @Controller('especialidade')
 export class EspecialidadeController {
