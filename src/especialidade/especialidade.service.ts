@@ -25,11 +25,10 @@ export class EspecialidadeService {
     return await this.db.especialidade.findMany();
   }
 
-  async createMany(data:any)
-  {
+  async createMany(data: any) {
     const especialidades = await this.db.especialidade.createMany(data);
 
-    return especialidades
+    return especialidades;
   }
 
   async findOne(id: number) {

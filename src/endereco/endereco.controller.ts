@@ -1,4 +1,10 @@
-import { Controller, Get, Body, ValidationPipe, UsePipes } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Body,
+  ValidationPipe,
+  UsePipes,
+} from '@nestjs/common';
 import { EnderecoService } from './endereco.service';
 
 @Controller('endereco')

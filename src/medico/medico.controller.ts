@@ -1,4 +1,15 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query, ValidationPipe, UsePipes } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Query,
+  ValidationPipe,
+  UsePipes,
+} from '@nestjs/common';
 import { MedicoService } from './medico.service';
 import { CreateMedicoDto } from './dto/create-medico.dto';
 import { UpdateMedicoDto } from './dto/update-medico.dto';
@@ -22,7 +33,7 @@ export class MedicoController {
 
   @Get('pesquisar')
   @UsePipes(ValidationPipe)
-  pesquisar(@Query() query:Medico) {
+  pesquisar(@Query() query: Medico) {
     return this.medicoService.pesquisar(query);
   }
 

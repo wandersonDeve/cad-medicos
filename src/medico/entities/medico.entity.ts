@@ -1,6 +1,6 @@
-import { Prisma } from "@prisma/client";
+import { Prisma } from '@prisma/client';
 
-export class Medico implements Prisma.MedicoUncheckedCreateInput{
+export class Medico implements Prisma.MedicoUncheckedCreateInput {
   id?: number;
   nome: string;
   crm: number;

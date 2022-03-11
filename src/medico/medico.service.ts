@@ -8,8 +8,7 @@ import { Medico } from './entities/medico.entity';
 export class MedicoService {
   constructor(private readonly db: PrismaService) {}
 
-  async create(data: CreateMedicoDto)
-  {
+  async create(data: CreateMedicoDto) {
     const medico = await this.db.medico.findUnique({
       where: {
         crm: data.crm,
@@ -39,7 +38,7 @@ export class MedicoService {
     return novoMedico;
   }
 
-  async pesquisar(queryDto:Medico) {
+  async pesquisar(queryDto: Medico) {
     if (!queryDto) {
       throw new BadRequestException('Sem dados para filtrar');
     }
